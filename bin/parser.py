@@ -44,6 +44,7 @@ from apel.parsers.sge import SGEParser
 from apel.parsers.pbs import PBSParser
 from apel.parsers.slurm import SlurmParser
 from apel.parsers.htcondor import HTCondorParser
+from apel.parsers.boinc import BoincParser
 
 
 LOGGER_ID = 'parser'
@@ -58,6 +59,7 @@ PARSERS = {
            'SLURM': SlurmParser,
            'blah' : BlahParser,
            'HTCondor': HTCondorParser,
+           'BOINC': BoincParser,
            }
 
 

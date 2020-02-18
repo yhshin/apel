@@ -101,6 +101,9 @@ cp conf/loader.cfg %{buildroot}%{apelconf}/
 cp conf/db.cfg %{buildroot}%{apelconf}/
 cp conf/parser.cfg %{buildroot}%{apelconf}/
 cp conf/auth.cfg %{buildroot}%{apelconf}/
+cp conf/boinc-acc.cfg %{buildroot}%{apelconf}/
+cp conf/parser-boinc.cfg %{buildroot}%{apelconf}/
+cp conf/client-boinc.cfg %{buildroot}%{apelconf}/
 
 # database schemas
 cp schemas/client.sql %{buildroot}%_datadir/apel/
@@ -115,6 +118,7 @@ cp scripts/update-*.sql %{buildroot}%_datadir/apel/
 # accounting scripts
 cp scripts/slurm_acc.sh %{buildroot}%_datadir/apel/
 cp scripts/htcondor_acc.sh %{buildroot}%_datadir/apel/
+cp scripts/boinc_acc.* %{buildroot}%_datadir/apel/
 
 # message status script
 cp scripts/msg_status.py %{buildroot}%_datadir/apel/
@@ -146,9 +150,13 @@ exit 0
 %attr(755,root,root) %_bindir/apelparser
 
 %config(noreplace) %attr(600,-,-) %{apelconf}/parser.cfg
+%config(noreplace) %attr(600,-,-) %{apelconf}/parser-boinc.cfg
+%config(noreplace) %attr(600,-,-) %{apelconf}/boinc-acc.cfg
 
 %attr(755,root,root) %_datadir/apel/slurm_acc.sh
 %attr(755,root,root) %_datadir/apel/htcondor_acc.sh
+%attr(755,root,root) %_datadir/apel/boinc_acc.sh
+%attr(755,root,root) %_datadir/apel/boinc_acc.py
 
 # ------------------------------------------------------------------------------
 
@@ -163,6 +171,7 @@ exit 0
 %attr(755,root,root) %_bindir/apelclient
 
 %config(noreplace) %attr(600,-,-) %{apelconf}/client.cfg
+%config(noreplace) %attr(600,-,-) %{apelconf}/client-boinc.cfg
 %config(noreplace) %{_sysconfdir}/logrotate.d/apel-client
 
 # ------------------------------------------------------------------------------
